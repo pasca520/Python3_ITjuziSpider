@@ -92,18 +92,3 @@ if __name__ == '__main__':
         Write_mongo(rows)
     print('爬虫结束')
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

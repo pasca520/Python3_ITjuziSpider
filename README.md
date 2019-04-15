@@ -1,5 +1,4 @@
-# ITjuziSpider
-
+# Python3_ITjuziSpider
 
 ## 1、思路
 这个脚本是用来爬取it桔子的免费投融资信息的，利用cookie信息，模拟登陆，然后导入到mongoDB里面。
@@ -15,21 +14,21 @@
 
 ## 2、依赖库
 
-import requests
-import random
-import string
-from configparser import ConfigParser
-import json
-import jsonpath
-import time
-import pymongo
-import csv
+- import requests
+- import random
+- import string
+- from configparser import ConfigParser
+- import json
+- import jsonpath
+- import time
+- import pymongo
+- import csv
 
 其中，如果jsonpath和csv没有实际使用到，jsonpath是一个json解析库，可以自定义json的资源。csv是我想直接导入到csv文件，后来想想，还是没弄了。
 后续有时间再整整。
 
 
 ## 3、注意点
-1、只能爬取三页，而且没做啥防爬措施
-2、业务学习使用# Python3_ITjuziSpider
-# Python3_ITjuziSpider
+1.只能爬取三页，而且没做啥防爬措施
+2.业务学习使用# Python3_ITjuziSpider
+
