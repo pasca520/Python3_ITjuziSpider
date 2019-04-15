@@ -31,4 +31,5 @@ import csv
 
 ## 3、注意点
 1、只能爬取三页，而且没做啥防爬措施
-2、业务学习使用
+2、业务学习使用# Python3_ITjuziSpider
+# Python3_ITjuziSpider
