@@ -1,35 +1,34 @@
 # ITjuziSpider
 
-本程序爬取IT桔子https://www.itjuzi.com 的4个部分：
+
+## 1、思路
+这个脚本是用来爬取it桔子的免费投融资信息的，利用cookie信息，模拟登陆，然后导入到mongoDB里面。
+对于我来说，主要遇到了两个难点。
+- 1、如何处理模拟登陆的环节
+- 2、导入数据如何保证mongoDB中数据不重复
+
+关于第一点，主要是根据https://curl.trillworks.com/这个网站复制的curl请求。
+然后直接查看cookie信息的构造，最后利用利用账号密码生成token信息请求
+
+关于第二点，试踩了很多坑，最后发现，不用insert_one直接插入，而是用update_one更新更好一点，mycol.update_one(row, {'$setOnInsert': row}, upsert=True)
 
 
-1：公司/项目 （itjuziCompanySpider.py）
+## 2、依赖库
 
-2：投融资速递 （itjuziInvesteventSpider.py）
+import requests
+import random
+import string
+from configparser import ConfigParser
+import json
+import jsonpath
+import time
+import pymongo
+import csv
 
-3：投资机构 （itjuziInvestmentsSpider.py）
+其中，如果jsonpath和csv没有实际使用到，jsonpath是一个json解析库，可以自定义json的资源。csv是我想直接导入到csv文件，后来想想，还是没弄了。
+后续有时间再整整。
 
-4：创投人物 （itjuziPersonsSpider.py）
 
-
-本爬虫爬到数据后，插入MongoDB中。
-安装好相关的依赖包后
-
- 1：requests
- 
- 2：pymongo
- 
- 3：json
- 
- 4：time
- 
- 5：random
- 
- 6：string
- 
- 7：configparser
-
-运行方法：直接运行对应的py文件即可开始爬虫。
-注意：IT桔子有VIP账号校验，因此，你需要购买VIP，将你的账号，密码写入config.ini文件中
-
-爬虫方法，请查看我的博客：http://www.siyuanblog.com/?p=1118
+## 3、注意点
+1、只能爬取三页，而且没做啥防爬措施
+2、业务学习使用
